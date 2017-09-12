@@ -2,8 +2,9 @@
   "name": "sdk-notification-client",
   "version": "1.0.0",
   "description": "SDK Notification Client for API Internal Communication",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "compile": "rm -Rf ./dist; node ./node_modules/.bin/babel --presets=es2015 --source-maps --copy-files ./src -d ./dist --ignore ./dist,./node_modules,./package-lock.json,./npm-debug.log",
     "test": "npm run test"
   },
   "repository": {
@@ -23,5 +24,12 @@
   "homepage": "https://github.com/Peinau/peinau-sdk-notificationclient#readme",
   "dependencies": {
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "async": "^2.4.0",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.23.0"
   }
 }

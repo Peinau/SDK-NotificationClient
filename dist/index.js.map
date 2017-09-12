@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":["NotificationClient"],"mappings":";;;;;;;AAAA;;;;;;QAGIA,kB","file":"index.js","sourcesContent":["import NotificationClient from './client/NotificationClient';\n\nexport {\n    NotificationClient\n};"]}

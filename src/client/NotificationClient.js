@@ -43,7 +43,7 @@ class NotificationClient {
           if (response.statusCode >= 200 && response.statusCode <= 210) {
             resolve(body);
           } else {
-            body.rawResponse = response;
+            body.rawResponse = response.toJSON();
             return reject(body);
           }
 

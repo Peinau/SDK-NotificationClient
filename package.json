@@ -1,6 +1,6 @@
 {
   "name": "sdk-notification-client",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "SDK Notification Client for API Internal Communication",
   "main": "src/index.js",
   "scripts": {

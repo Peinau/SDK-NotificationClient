@@ -39,11 +39,12 @@ class NotificationClient {
           if (error) {
             return reject(error);
           }
-          
+
           if (response.statusCode >= 200 && response.statusCode <= 210) {
             resolve(body);
           } else {
-            return reject(response);
+            body.rawResponse = response;
+            return reject(body);
           }
 
         });

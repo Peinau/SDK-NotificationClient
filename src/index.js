@@ -1,5 +1,5 @@
-import NotificationClient from './client/NotificationClient';
+const NotificationClient = require('./client/NotificationClient');
 
-export {
+module.exports = {
     NotificationClient
 };

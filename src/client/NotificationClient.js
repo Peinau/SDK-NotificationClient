@@ -37,7 +37,10 @@ class NotificationClient {
       },
         function (error, response, body) {
           if (error) {
-            return reject(error);
+            return reject({
+              error: error,
+              body: body
+            });
           }
 
           if (response.statusCode >= 200 && response.statusCode <= 210) {

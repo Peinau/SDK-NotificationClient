@@ -21,6 +21,12 @@ class NotificationClient {
    */
   triggerWebHooks(hooks, eventName, payload) {
     return new Promise((resolve, reject) => {
+      if (hooks.length === 0) {
+        const err = new Error('AT_LEAST_ONE_HOOK_IS_REQUIRED');
+        err.type = err.message;
+        return reject(err);
+      }
+      
       request({
         url: `${this.endpoint}/webhooks`,
         method: "POST",

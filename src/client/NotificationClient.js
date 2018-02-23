@@ -14,40 +14,36 @@ class NotificationClient {
 
   /**
    * Send a Web Hook
-   * @param {string}  triggerUrl - Trigger URL to call
+   * @param {Object} hooks - Urls to trigger
    * @param {string} eventName - Event name for hook is called
    * @param {string} payload - Payload Data to send in the POST request
    * @return {Promise} Promise returned when notification server enqueue the request
    */
-  triggerWebHook(triggerUrl, eventName, payload) {
+  triggerWebHooks(hooks, eventName, payload) {
     return new Promise((resolve, reject) => {
-      var url = this.endpoint + "/webhooks"
       request({
-        url: url,
+        url: `${this.endpoint}/webhooks`,
         method: "POST",
         json: true,
         headers: {
           'X-Api-Key': this.authKey,
         },
         body: {
-          url: triggerUrl,
+          hooks: hooks,
           event: eventName,
           payload: payload
         }
       },
         function (error, response, body) {
           if (error) {
-            return reject({
-              error: error,
-              body: body
-            });
+            return reject(error);
           }
 
           if (response.statusCode >= 200 && response.statusCode <= 210) {
             resolve(body);
           } else {
             body.rawResponse = response.toJSON();
-            return reject(body);
+            reject(body);
           }
 
         });
